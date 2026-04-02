@@ -7,4 +7,6 @@ on:
 jobs:
   release:
     uses: oxidized-mc/ci/.github/workflows/release-please.yml@main
-
+    permissions:
+      contents: write
+      pull-requests: write
