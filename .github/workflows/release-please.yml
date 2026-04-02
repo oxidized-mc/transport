@@ -1,0 +1,10 @@
+name: Release Please
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  release:
+    uses: oxidized-mc/ci/.github/workflows/release-please.yml@main
+
