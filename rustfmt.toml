@@ -1,0 +1,11 @@
+edition = "2024"
+
+# Line length
+max_width  = 100
+hard_tabs  = false
+tab_spaces = 4
+
+# Style
+use_small_heuristics       = "Default"
+match_block_trailing_comma = true
+newline_style              = "Unix"

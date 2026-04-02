@@ -1,0 +1,66 @@
+# commitlint configuration — Oxidized
+# https://commitlint.js.org/
+
+rules:
+  # Type is required and must be one of the allowed values
+  type-enum:
+    - 2
+    - always
+    - - feat
+      - fix
+      - perf
+      - refactor
+      - test
+      - docs
+      - chore
+      - ci
+  type-empty:
+    - 2
+    - never
+  type-case:
+    - 2
+    - always
+    - lower-case
+
+  # Scope is optional but must be one of the allowed values when present
+  scope-enum:
+    - 2
+    - always
+    - - transport
+      - ci
+      - deps
+  scope-case:
+    - 2
+    - always
+    - lower-case
+
+  # Subject (description) rules
+  subject-empty:
+    - 2
+    - never
+  subject-case:
+    - 2
+    - always
+    - lower-case
+  subject-full-stop:
+    - 2
+    - never
+    - "."
+
+  # Header length
+  header-max-length:
+    - 2
+    - always
+    - 100
+
+  # Body rules
+  body-max-line-length:
+    - 1
+    - always
+    - 100
+
+  # Footer rules
+  footer-max-line-length:
+    - 1
+    - always
+    - 100
