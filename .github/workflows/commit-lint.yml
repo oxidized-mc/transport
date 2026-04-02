@@ -4,20 +4,8 @@ on:
   pull_request:
     branches: [main]
 
-permissions:
-  contents: read
-  pull-requests: read
-
 jobs:
-  commitlint:
-    name: Validate conventional commits
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-
-      - name: Validate PR commits
-        uses: wagoid/commitlint-github-action@v6
-        with:
-          configFile: .commitlintrc.yml
+  lint:
+    uses: oxidized-mc/ci/.github/workflows/commit-lint.yml@main
+    with:
+      scopes: "deps"
