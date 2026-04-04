@@ -12,9 +12,9 @@ keywords     = ["minecraft", "oxidized-mc"]
 categories   = ["game-development"]
 
 [dependencies]
-oxidized-codec       = { version = "0.1" }
-oxidized-crypto      = { version = "0.1" }
-oxidized-compression = { version = "0.1" }
+oxidized-codec       = { git = "https://github.com/oxidized-mc/codec.git" }
+oxidized-crypto      = { git = "https://github.com/oxidized-mc/crypto.git" }
+oxidized-compression = { git = "https://github.com/oxidized-mc/compression.git" }
 bytes     = "1"
 thiserror = "2"
 tokio     = { version = "1", features = ["net", "io-util", "sync"] }
@@ -23,10 +23,16 @@ tokio     = { version = "1", features = ["net", "io-util", "sync"] }
 proptest = "1"
 tokio    = { version = "1", features = ["net", "io-util", "sync", "rt", "macros"] }
 
-[patch.crates-io]
-oxidized-nbt         = { path = "../nbt" }
-oxidized-codec       = { path = "../codec" }
-oxidized-crypto      = { path = "../crypto" }
+[patch."https://github.com/oxidized-mc/nbt.git"]
+oxidized-nbt = { path = "../nbt" }
+
+[patch."https://github.com/oxidized-mc/codec.git"]
+oxidized-codec = { path = "../codec" }
+
+[patch."https://github.com/oxidized-mc/crypto.git"]
+oxidized-crypto = { path = "../crypto" }
+
+[patch."https://github.com/oxidized-mc/compression.git"]
 oxidized-compression = { path = "../compression" }
 
 [lints.rust]
