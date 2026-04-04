@@ -23,18 +23,6 @@ tokio     = { version = "1", features = ["net", "io-util", "sync"] }
 proptest = "1"
 tokio    = { version = "1", features = ["net", "io-util", "sync", "rt", "macros"] }
 
-[patch."https://github.com/oxidized-mc/nbt.git"]
-oxidized-nbt = { path = "../nbt" }
-
-[patch."https://github.com/oxidized-mc/codec.git"]
-oxidized-codec = { path = "../codec" }
-
-[patch."https://github.com/oxidized-mc/crypto.git"]
-oxidized-crypto = { path = "../crypto" }
-
-[patch."https://github.com/oxidized-mc/compression.git"]
-oxidized-compression = { path = "../compression" }
-
 [lints.rust]
 missing_docs   = "warn"
 unsafe_code    = "deny"
@@ -62,3 +50,16 @@ must_use_candidate         = "allow"
 cast_possible_truncation   = "allow"
 cast_sign_loss             = "allow"
 cast_possible_wrap         = "allow"
+
+[patch."https://github.com/oxidized-mc/nbt.git"]
+oxidized-nbt = { path = "../nbt" }
+
+[patch."https://github.com/oxidized-mc/codec.git"]
+oxidized-codec = { path = "../codec" }
+
+[patch."https://github.com/oxidized-mc/crypto.git"]
+oxidized-crypto = { path = "../crypto" }
+
+[patch."https://github.com/oxidized-mc/compression.git"]
+oxidized-compression = { path = "../compression" }
+
