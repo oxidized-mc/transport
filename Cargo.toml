@@ -12,9 +12,9 @@ keywords     = ["minecraft", "oxidized-mc"]
 categories   = ["game-development"]
 
 [dependencies]
-oxidized-codec       = { git = "https://github.com/oxidized-mc/codec.git" }
-oxidized-crypto      = { git = "https://github.com/oxidized-mc/crypto.git" }
-oxidized-compression = { git = "https://github.com/oxidized-mc/compression.git" }
+oxidized-codec       = "0.1.0-dev"
+oxidized-crypto      = "0.1.0-dev"
+oxidized-compression = "0.1.0-dev"
 bytes     = "1"
 thiserror = "2"
 tokio     = { version = "1", features = ["net", "io-util", "sync"] }
@@ -51,15 +51,8 @@ cast_possible_truncation   = "allow"
 cast_sign_loss             = "allow"
 cast_possible_wrap         = "allow"
 
-[patch."https://github.com/oxidized-mc/nbt.git"]
-oxidized-nbt = { path = "../nbt" }
-
-[patch."https://github.com/oxidized-mc/codec.git"]
+[patch.crates-io]
 oxidized-codec = { path = "../codec" }
-
-[patch."https://github.com/oxidized-mc/crypto.git"]
-oxidized-crypto = { path = "../crypto" }
-
-[patch."https://github.com/oxidized-mc/compression.git"]
 oxidized-compression = { path = "../compression" }
-
+oxidized-crypto = { path = "../crypto" }
+oxidized-nbt = { path = "../nbt" }
