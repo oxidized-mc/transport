@@ -12,9 +12,22 @@ keywords     = ["minecraft", "oxidized-mc"]
 categories   = ["game-development"]
 
 [dependencies]
+oxidized-codec       = { version = "0.1" }
+oxidized-crypto      = { version = "0.1" }
+oxidized-compression = { version = "0.1" }
+bytes     = "1"
+thiserror = "2"
+tokio     = { version = "1", features = ["net", "io-util", "sync"] }
 
 [dev-dependencies]
 proptest = "1"
+tokio    = { version = "1", features = ["net", "io-util", "sync", "rt", "macros"] }
+
+[patch.crates-io]
+oxidized-nbt         = { path = "../nbt" }
+oxidized-codec       = { path = "../codec" }
+oxidized-crypto      = { path = "../crypto" }
+oxidized-compression = { path = "../compression" }
 
 [lints.rust]
 missing_docs   = "warn"
