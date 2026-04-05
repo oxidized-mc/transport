@@ -227,7 +227,7 @@ pub enum ConnectionError {
     #[error("protocol error: {0}")]
     Protocol(#[from] PacketDecodeError),
 
-    /// The client exceeded the packet rate limit (ADR-006).
+    /// The client exceeded the packet rate limit.
     #[error("rate limited: client exceeded {0} packets per tick window")]
     RateLimited(u32),
 
@@ -264,7 +264,7 @@ pub struct Connection {
 impl Connection {
     /// Creates a new connection from an accepted [`TcpStream`].
     ///
-    /// Sets `TCP_NODELAY` for low-latency writes (per ADR-006) and splits
+    /// Sets `TCP_NODELAY` for low-latency writes and splits
     /// the stream into independent read/write halves.
     ///
     /// # Errors

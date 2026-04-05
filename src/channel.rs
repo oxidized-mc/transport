@@ -2,8 +2,7 @@
 //!
 //! Defines the packet wrappers that flow through bounded `mpsc` channels
 //! between the reader task, writer task, and game logic. Also defines
-//! the capacity and rate-limiting constants specified by
-//! ADR-006 (Network I/O).
+//! the capacity and rate-limiting constants for the network I/O layer.
 
 use bytes::Bytes;
 
@@ -42,7 +41,7 @@ pub struct OutboundPacket {
 }
 
 // ---------------------------------------------------------------------------
-// Constants (ADR-006)
+// Network I/O constants
 // ---------------------------------------------------------------------------
 
 /// Channel capacity for inbound packets (reader → game logic).

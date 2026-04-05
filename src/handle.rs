@@ -4,8 +4,8 @@
 //! on the outbound channel without direct access to the TCP stream. The
 //! writer task drains the channel and flushes packets to the network.
 //!
-//! See ADR-006 (Network I/O) for the
-//! reader/writer task pair architecture.
+//! Each connection uses a reader/writer task pair with bounded channels,
+//! keeping network I/O off the game thread.
 
 use std::net::SocketAddr;
 
