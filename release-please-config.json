@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
-  "release-type": "simple",
+  "release-type": "rust",
   "bump-minor-pre-major": true,
   "bump-patch-for-minor-pre-major": false,
   "include-v-in-tag": true,
@@ -18,13 +18,7 @@
   "packages": {
     ".": {
       "component": "oxidized-transport",
-      "changelog-path": "CHANGELOG.md",
-      "extra-files": [
-        {
-          "type": "generic",
-          "path": "Cargo.toml"
-        }
-      ]
+      "changelog-path": "CHANGELOG.md"
     }
   }
 }
