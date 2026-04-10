@@ -52,9 +52,3 @@ must_use_candidate         = "allow"
 cast_possible_truncation   = "allow"
 cast_sign_loss             = "allow"
 cast_possible_wrap         = "allow"
-
-[patch.crates-io]
-oxidized-codec = { path = "../codec" }
-oxidized-compression = { path = "../compression" }
-oxidized-crypto = { path = "../crypto" }
-oxidized-nbt = { path = "../nbt" }
