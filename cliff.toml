@@ -1,0 +1,101 @@
+# git-cliff configuration — oxidized-transport
+# https://git-cliff.org/docs/configuration
+
+[changelog]
+# Template for the full changelog
+header = """
+# Changelog
+
+All notable changes to oxidized-transport will be documented in this file.
+
+The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
+this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+---
+"""
+body = """
+{%- macro remote_url() -%}
+  https://github.com/oxidized-mc/transport
+{%- endmacro -%}
+
+{% if version -%}
+## [{{ version | trim_start_matches(pat="v") }}] — {{ timestamp | date(format="%Y-%m-%d") }}
+{% else -%}
+## [Unreleased]
+{% endif -%}
+
+{% for group, commits in commits | group_by(attribute="group") %}
+### {{ group | striptags | trim }}
+{% for commit in commits
+| filter(attribute="scope")
+| sort(attribute="scope") %}
+- **{{ commit.scope }}:** {{ commit.message | upper_first }}\
+  {% if commit.breaking %} (**BREAKING**){% endif %}\
+  ([{{ commit.id | truncate(length=7, end="") }}]({{ self::remote_url() }}/commit/{{ commit.id }}))
+{%- endfor -%}
+{% for commit in commits %}
+{%- if not commit.scope %}
+- {{ commit.message | upper_first }}\
+  {% if commit.breaking %} (**BREAKING**){% endif %}\
+  ([{{ commit.id | truncate(length=7, end="") }}]({{ self::remote_url() }}/commit/{{ commit.id }}))
+{% endif -%}
+{%- endfor -%}
+{% endfor %}
+"""
+footer = """
+{%- macro remote_url() -%}
+  https://github.com/oxidized-mc/transport
+{%- endmacro -%}
+
+{% for release in releases -%}
+{% if release.version -%}
+{% if release.previous.version -%}
+[{{ release.version | trim_start_matches(pat="v") }}]: {{ self::remote_url() }}/compare/{{ release.previous.version }}...{{ release.version }}
+{% endif -%}
+{% else -%}
+{% if release.previous.version -%}
+[Unreleased]: {{ self::remote_url() }}/compare/{{ release.previous.version }}...HEAD
+{% else -%}
+[Unreleased]: {{ self::remote_url() }}/commits/HEAD
+{% endif -%}
+{% endif -%}
+{% endfor %}
+"""
+trim = true
+
+[git]
+conventional_commits = true
+filter_unconventional = true
+split_commits = false
+protect_breaking_commits = true
+
+commit_preprocessors = [
+  # Remove issue references from commit messages for cleaner changelog
+  { pattern = '\((\w+\s)?#([0-9]+)\)', replace = "" },
+]
+
+commit_parsers = [
+  # Skip
+  { message = "^chore\\(deps\\)", skip = true },
+  { message = "^chore\\(release\\)", skip = true },
+  { message = "^ci", skip = true },
+
+  # Group mappings
+  { message = "^feat", group = "<!-- 0 -->🚀 Features" },
+  { message = "^fix", group = "<!-- 1 -->🐛 Bug Fixes" },
+  { message = "^perf", group = "<!-- 2 -->⚡ Performance" },
+  { message = "^refactor", group = "<!-- 3 -->🔨 Refactor" },
+  { message = "^docs", group = "<!-- 4 -->📖 Documentation" },
+  { message = "^test", group = "<!-- 5 -->🧪 Testing" },
+  { message = "^chore", group = "<!-- 6 -->🏗️ Miscellaneous" },
+
+  # Catch-all for anything that slips through
+  { message = ".*", group = "<!-- 9 -->Other" },
+]
+
+filter_commits = false
+tag_pattern = "v[0-9].*"
+skip_tags = ""
+ignore_tags = ""
+topo_order = false
+sort_commits = "newest"

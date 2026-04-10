@@ -1,0 +1,7 @@
+# Clippy configuration file
+# See: https://doc.rust-lang.org/clippy/configuration.html
+
+msrv = "1.85"
+cognitive-complexity-threshold = 30
+too-many-arguments-threshold = 8
+type-complexity-threshold = 250

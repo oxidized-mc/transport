@@ -1,0 +1,6 @@
+# Force LF line endings everywhere — ensures cargo fmt --check passes on Windows CI.
+* text=auto eol=lf
+
+# Binary files
+*.png binary
+*.ico binary

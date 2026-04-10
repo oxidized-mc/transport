@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📖 Project
+    url: https://github.com/oxidized-mc/transport
+    about: Project overview and status
+  - name: 💬 Discussions
+    url: https://github.com/oxidized-mc/transport/discussions
+    about: General questions and community chat
